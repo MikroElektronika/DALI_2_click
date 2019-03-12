@@ -1,0 +1,36 @@
+{*
+
+Use mikroE Timer Calculator to generate proper timer configuration
+and timer ISR.
+
+https://www.mikroe.com/timer-calculator
+
+*}
+unit Click_DALI_2_timer;
+
+uses Click_DALI_2_types;
+
+procedure dali2_configTimer(); 
+
+implementation
+
+procedure dali2_configTimer(); 
+begin
+
+    SREG_I_bit := 1; 
+    TCCR1A := 0x80;
+    TCCR1B := 0x09;
+    OCR1AH := 0x03; 
+    OCR1AL := 0x3F; 
+    OCIE1A_bit := 1; 
+
+end;
+
+procedure Timer_interrupt(); org IVT_ADDR_TIMER1_COMPA;
+begin
+
+    dali2_isr(); 
+
+end;
+
+end.

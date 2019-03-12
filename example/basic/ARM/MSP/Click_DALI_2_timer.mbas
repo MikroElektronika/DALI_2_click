@@ -1,0 +1,36 @@
+'
+' Use mikroE Timer Calculator to generate proper timer configuration
+' and timer ISR.
+'
+' https://www.mikroe.com/timer-calculator
+'
+module Click_DALI_2_timer
+
+include Click_DALI_2_types
+    
+sub procedure dali2_configTimer() 
+
+implements
+
+sub procedure dali2_configTimer() 
+
+    TIMER32_T32CONTROL1 = (TIMER32_T32CONTROL1 and 0xFFFFFFFE) 
+    TIMER32_T32CONTROL1 = (TIMER32_T32CONTROL1 or 0x02) 
+    TIMER32_T32CONTROL1 = (TIMER32_T32CONTROL1 or 0) 
+    TIMER32_T32CONTROL1 = (TIMER32_T32CONTROL1 or 0x20) 
+    TIMER32_T32CONTROL1 = (TIMER32_T32CONTROL1 or 0x40) 
+    TIMER32_T32LOAD1 = 0x0000BB80 
+    NVIC_IntEnable(IVT_INT_T32_INT1) 
+    ' IVT_INT_T32_INT1TIMER32_T32CONTROL1 = (IVT_INT_T32_INT1TIMER32_T32CONTROL1 or 0x80) 
+    EnableInterrupts() 
+
+end sub
+
+sub procedure Timer_interrupt() iv IVT_INT_T32_INT1
+
+    dali2_isr()
+    TIMER32_T32INTCLR1 = 1 
+
+end sub
+
+end.

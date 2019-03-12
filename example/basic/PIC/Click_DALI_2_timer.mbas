@@ -1,0 +1,34 @@
+'
+' Use mikroE Timer Calculator to generate proper timer configuration
+' and timer ISR.
+'
+' https://www.mikroe.com/timer-calculator
+'
+module Click_DALI_2_timer
+
+include Click_DALI_2_types
+    
+sub procedure dali2_configTimer() 
+
+implements
+
+sub procedure dali2_configTimer() 
+
+    T0CON  = 0xC2
+    TMR0L  = 0x30
+    GIE_bit    = 1
+    TMR0IE_bit     = 1
+
+end sub
+
+sub procedure Interrupt() 
+
+    if ((TMR1IF_bit <> 0)) then 
+        dali2_isr()
+        TMR1IF_bit = 0 
+        TMR1L = 0x30 
+    end if
+
+end sub
+
+end.

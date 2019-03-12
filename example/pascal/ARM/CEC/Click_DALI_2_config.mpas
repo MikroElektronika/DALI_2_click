@@ -1,0 +1,5 @@
+unit Click_DALI_2_config;
+
+uses Click_DALI_2_types;
+
+end.

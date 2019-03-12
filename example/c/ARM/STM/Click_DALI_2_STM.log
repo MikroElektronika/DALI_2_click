@@ -1,0 +1,24 @@
+0	1	mikroCARM.exe -MSF -DBG -pSTM32F107VC -BIN -LHF -C -DL -SSA -O11111114 -fo72 -N"E:\git\click-boards\DALI_2_click\SW\mikroSDK_ver\example\c\ARM\STM\Click_DALI_2_STM.mcpar" -SP"C:\Users\Public\Documents\Mikroelektronika\mikroC PRO for ARM\Defs\" -SP"C:\Users\Public\Documents\Mikroelektronika\mikroC PRO for ARM\Uses\ST M3\" -SP"E:\git\click-boards\DALI_2_click\SW\mikroSDK_ver\example\c\ARM\STM\" -SP"E:\git\click-boards\DALI_2_click\SW\mikroSDK_ver\library\HAL\" -SP"E:\git\click-boards\DALI_2_click\SW\mikroSDK_ver\library\" -SP"C:\Users\Public\Documents\Mikroelektronika\mikroC PRO for ARM\Packages\mikroBUS Board Definition API\Uses\" -IP"C:\Users\Public\Documents\Mikroelektronika\mikroC PRO for ARM\Uses\ST M3\" -IP"E:\git\click-boards\DALI_2_click\SW\mikroSDK_ver\example\c\ARM\STM\" -IP"E:\git\click-boards\DALI_2_click\SW\mikroSDK_ver\library\" -IP"E:\git\click-boards\DALI_2_click\SW\mikroSDK_ver\library\HAL\" -IP"C:\Users\Public\Documents\Mikroelektronika\mikroC PRO for ARM\Packages\mikroBUS Board Definition API\Uses\" "Click_DALI_2_STM.c" "__dali2_driver.c" "__Lib_Math.emcl" "__Lib_MathDouble.emcl" "__Lib_Delays.emcl" "__Lib_System_105_107.emcl" "__Lib_GPIO_32F10x_Defs.emcl" "__Lib_GPIO_32F10x.emcl" "__Lib_Button.emcl" "__Lib_UART_123_45.emcl" "easymx_v7_STM32F107VC.emcl" "Click_DALI_2.pld"	 
+diagnostics: 0	122	Compilation Started	stdint.h
+hint: 0	1004	interrupt handler (Timer_interrupt at 0x002C)	click_dali_2_timer.h
+diagnostics: 85	123	Compiled Successfully	Click_DALI_2_STM.c
+hint: 51	1164	Variable 'current_state' has been eliminated by optimizer	Click_DALI_2_STM.c
+diagnostics: 0	122	Compilation Started	stdint.h
+hint: 458	1163	Variable 'pulsePosition' has been declared, but not used	__dali2_driver.c
+hint: 811	1163	Variable 'i' has been declared, but not used	__dali2_driver.c
+hint: 893	1163	Variable 'pulsePosition' has been declared, but not used	__dali2_driver.c
+diagnostics: 973	123	Compiled Successfully	__dali2_driver.c
+hint: 323	1164	Variable 'tmp' has been eliminated by optimizer	__dali2_driver.c
+hint: 487	1164	Variable 'pulsePosition' has been eliminated by optimizer	__dali2_driver.c
+hint: 547	1164	Variable 'loc' has been eliminated by optimizer	__dali2_driver.c
+hint: 548	1164	Variable 'val' has been eliminated by optimizer	__dali2_driver.c
+hint: 558	1164	Variable 'loc' has been eliminated by optimizer	__dali2_driver.c
+hint: 717	1164	Variable 'tmp' has been eliminated by optimizer	__dali2_driver.c
+diagnostics: 0	127	All files Compiled in 250 ms	 
+hint: 0	1144	Used RX: 16 (100%)   Free RX: 0 (0%)	Used RX: 16 (100%)   Free RX: 0 (0%)
+hint: 0	1144	Static RAM (bytes): 209   Dynamic RAM (bytes): 65324	Static RAM (bytes): 209   Dynamic RAM (bytes): 65324
+hint: 0	1144	Used ROM (bytes): 5506 (2%)  Free ROM (bytes): 256638 (98%)	Used ROM (bytes): 5506 (2%)  Free ROM (bytes): 256638 (98%)
+diagnostics: 0	125	Project Linked Successfully	Click_DALI_2_STM.mcpar
+diagnostics: 0	128	Linked in 312 ms	 
+diagnostics: 0	129	Project 'Click_DALI_2_STM.mcpar' completed: 718 ms	 
+diagnostics: 0	103	Finished successfully: 05 Feb 2018, 11:26:39	Click_DALI_2_STM.mcpar

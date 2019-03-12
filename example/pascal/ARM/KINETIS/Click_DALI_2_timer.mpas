@@ -1,0 +1,38 @@
+{*
+
+Use mikroE Timer Calculator to generate proper timer configuration
+and timer ISR.
+
+https://www.mikroe.com/timer-calculator
+
+*}
+unit Click_DALI_2_timer;
+
+uses Click_DALI_2_types;
+
+procedure dali2_configTimer(); 
+
+implementation
+
+procedure dali2_configTimer(); 
+begin
+
+    SIM_SCGC6 := SIM_SCGC6 or (1 shl PIT);
+    NVIC_IntEnable(IVT_INT_PIT0);
+    PIT_MCR := 0x00;
+    PIT_LDVAL0 := 12479;
+    PIT_TCTRL0 := PIT_TCTRL0 or 2;
+    PIT_TCTRL0 := PIT_TCTRL0 or 1;
+    EnableInterrupts(); 
+
+end;
+
+procedure Timer_interrupt(); iv IVT_INT_PIT0;
+begin
+
+    dali2_isr(); 
+    PIT_TFLG0.TIF := 1; 
+
+end;
+
+end.
