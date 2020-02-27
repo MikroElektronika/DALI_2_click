@@ -486,18 +486,7 @@ static void _sendingData()
 {
     uint8_t pulsePosition;
   
-    if (_tickCounter < 8)
-    {
-        if (_tickCounter < 4)
-        {
-            hal_gpio_rstSet( 1 );
-        }
-        else
-        {
-            hal_gpio_rstSet( 0 );
-        }
-    }
-    else if (_bitCounter < 17)
+    if (_bitCounter < 17)
     {
         if (_tickCounter % 4 == 0)
         {
@@ -567,7 +556,7 @@ static uint8_t _checkSpecCmd(uint8_t addrByte)
     
     addrToCheck = addrByte;
 
-    if ((addrToCheck == 0x90) || (addrToCheck == 0xA0))
+    if ((addrToCheck >= 0x90) || (addrToCheck <= 0xA0))
     {
         if (addrToCheck & 0x01)
             return TRUE;
@@ -593,7 +582,7 @@ static void _prepareData(uint8_t *commandArray, uint8_t *tx_array, uint8_t bytes
     
     for (i = 0; i < 9; i++)
     {
-        tx_array[0] = 0;
+        tx_array[i] = 0;
     }
     
     for (bytes_counter = 0; bytes_counter < bytesInCmd; bytes_counter++)
@@ -633,6 +622,11 @@ static void _prepareData(uint8_t *commandArray, uint8_t *tx_array, uint8_t bytes
 static void _prepareAddress(uint8_t *commandArray, uint8_t addressType, uint8_t byteAddressPosition, uint8_t followingType)
 {
     uint8_t addr_tmp;
+
+	if(_checkSpecCmd(commandArray[byteAddressPosition]))
+	{
+		return;
+	}
     
     if (addressType == _DALI2_BROADCAST_CMD)
     {
@@ -753,8 +747,7 @@ void dali2_sendCmd(const uint8_t balAddress, const uint8_t cmd, const uint8_t cm
     
     _tickCounter = 0;
     _bitCounter  = 0;
-    
-    _daliState = _DALI2_SENDING_DATA;
+   
 
     tmp[0] = balAddress;
     tmp[1] = cmd;
@@ -802,6 +795,7 @@ void dali2_sendCmd(const uint8_t balAddress, const uint8_t cmd, const uint8_t cm
         }
     }
   
+    _daliState = _DALI2_SENDING_DATA;
     _tickCounter = 0;
     _bitCounter = 0;
 }
